@@ -133,10 +133,11 @@ module MCollective
         if File.exists?('/usr/bin/wget')
           reply[:status] = run("/usr/bin/wget -q --user #{@user} --password #{@passwd} -O #{localpath} '#{url}'", :stdout => :out, :stderr => :err)
         elsif File.exists?('/usr/bin/curl')
-          reply[:status] = run("/usr/bin/curl -s -u '#{@user}:#{@passwd}' -o #{localpath} '#{url}'", :stdout => :out, :stderr => :err)
+          reply[:status] = run("/usr/bin/curl -f -s -u '#{@user}:#{@passwd}' -o #{localpath} '#{url}'", :stdout => :out, :stderr => :err)
         else
           false
         end
+        reply.fail! "Download failed" unless reply[:status] == 0
       end
 
       # Why the fuck is this not an internal Ruby variable?

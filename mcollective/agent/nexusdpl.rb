@@ -85,6 +85,7 @@ module MCollective
         end
         begin
           FileUtils.mv(tempfile, path)
+          File.chmod(0644, path)
         rescue Exception => e
           reply[:error] = e.message
           reply[:trace] = e.backtrace.inspect

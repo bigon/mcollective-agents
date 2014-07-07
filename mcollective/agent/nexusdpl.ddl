@@ -46,6 +46,14 @@ action "dpl", :description => "Deploy specified artefact to application server" 
     :optional    => true,
     :maxlength   => 256
 
+  input :appname,
+    :prompt      => "Name of the app when deployed",
+    :description => "What name this app will have when deployed? (Default: $context)",
+    :type        => :string,
+    :validation  => '^.+$',
+    :optional    => true,
+    :maxlength   => 256
+
   input :ext,
     :prompt      => "Extension of app",
     :description => "What extension does this app have? (Default: war)",

@@ -21,6 +21,10 @@ class MCollective::Application::Nexusdpl<MCollective::Application
     :arguments      => ["--appversion VERSION"],
     :default        => "LATEST"
 
+  option :appname,
+    :description    => "Which name this app will have when deployed?",
+    :arguments      => ["--appname name"]
+
   option :ext,
     :description    => "Which extension does this app have?",
     :arguments      => ["--ext EXTENSION"],

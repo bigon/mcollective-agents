@@ -67,7 +67,8 @@ module MCollective
         repo = request[:repo] || @repo
         ext = request[:ext] || "war"
         context = request[:context] || app
-        path = request[:path] || "/opt/tomcats/#{context}/webapps/#{context}.#{ext}"
+        appname =  request[:appname] || context
+        path = request[:path] || "/opt/tomcats/#{context}/webapps/#{appname}.#{ext}"
         restart = request[:restart] || nil # no default here ;)
 
         url = "#{@base_url}/service/local/artifact/maven/redirect?r=#{repo}&g=#{group}&a=#{app}&e=#{ext}&v=#{version}"
